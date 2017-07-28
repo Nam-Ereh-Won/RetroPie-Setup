@@ -941,7 +941,9 @@ function show_launch() {
             IMG_PID=$!
             sleep "$IMAGE_DELAY"
         else
-            fbi -1 -t "$IMAGE_DELAY" -noverbose -a "$image" </dev/tty &>/dev/null
+            fbi -noverbose -a "$image" </dev/tty &>/dev/null &
+            IMG_PID=$!
+            sleep "$IMAGE_DELAY"
         fi
     elif [[ "$DISABLE_MENU" -ne 1 && "$USE_ART" -ne 1 ]]; then
         local launch_name
